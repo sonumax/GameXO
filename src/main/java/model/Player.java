@@ -11,6 +11,7 @@ public class Player {
         this.figure = figure;
     }
 
+
     public String getName() {
         return name;
     }

@@ -4,9 +4,13 @@ import model.Player;
 
 public class Game {
 
-    private static final String GAME_NAME = "XO";
+    private final String gameName;
 
-    private Player players[];
+    private Player[] players;
+
+    public Game(final String gameName) {
+        this.gameName = gameName;
+    }
 
     public Player currentPlayer() {
         return null;
@@ -16,8 +20,8 @@ public class Game {
         return false;
     }
 
-    public static String getGameName() {
-        return GAME_NAME;
+    public String getGameName() {
+        return gameName;
     }
 
     public Player[] getPlayers() {

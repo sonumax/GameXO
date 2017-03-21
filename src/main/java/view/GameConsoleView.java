@@ -7,12 +7,12 @@ public class GameConsoleView {
 
     protected final Game game;
 
-    public GameConsoleView(Game game) {
+    public GameConsoleView(final Game game) {
         this.game = game;
     }
 
     public void showGameNames() {
-        System.out.println(Game.getGameName());
+        System.out.println(game.getGameName());
     }
 
     public void showPlayersName() {
