@@ -1,10 +1,10 @@
 package model;
 
-import java.util.Arrays;
+import helpers.CoordinateHelper;
 
 public class Board {
 
-    private static final int SIZE_FIELD = 3;
+    public static final int SIZE_FIELD = 3;
 
     private Figure[][] figures = new Figure[SIZE_FIELD][SIZE_FIELD];
 
@@ -12,7 +12,10 @@ public class Board {
         //TODO
     }
 
-    public void showBoard() {
-        System.out.println(Arrays.deepToString(this.figures));
+    public Figure getFigure(final int x, final int y) {
+        if(!CoordinateHelper.checkCoordinate(x) || !CoordinateHelper.checkCoordinate(y)) {
+            return null;
+        }
+        return figures[x][y];
     }
 }
