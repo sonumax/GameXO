@@ -12,7 +12,7 @@ public class Game {
 
     private Player[] players;
 
-    public Game(String gameName) {
+    public Game(final String gameName) {
         this.gameName = gameName;
     }
 
@@ -42,7 +42,6 @@ public class Game {
         if (coordinate < MIN_COORDINATE || coordinate > MAX_COORDINATE) {
             return false;
         }
-
         return true;
     }
 }
