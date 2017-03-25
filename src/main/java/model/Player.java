@@ -4,9 +4,9 @@ public class Player {
 
     private final String name;
 
-    private final String figure;
+    private final Figure figure;
 
-    public Player(final String name, final String figure) {
+    public Player(final String name, final Figure figure) {
         this.name = name;
         this.figure = figure;
     }
@@ -16,7 +16,7 @@ public class Player {
         return name;
     }
 
-    public String getFigure() {
+    public Figure getFigure() {
         return figure;
     }
 }
