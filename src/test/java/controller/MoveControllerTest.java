@@ -18,6 +18,7 @@ public class MoveControllerTest {
     public void testApplyFigure() {
         final Board board = new Board(3, 3);
         final Figure inputFigure = Figure.O;
+        final Figure expectedFigure = inputFigure;
         final Point inputPoint = new Point(0, 0);
 
         MoveController moveController = new MoveController();
@@ -30,7 +31,7 @@ public class MoveControllerTest {
 
         Figure actualFigure = board.getFigure(inputPoint);
 
-        assertEquals(inputFigure, actualFigure);
+        assertEquals(expectedFigure, actualFigure);
     }
 
     @Test
