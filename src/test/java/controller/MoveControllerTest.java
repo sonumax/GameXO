@@ -2,15 +2,12 @@ package controller;
 
 import exceptions.AlreadyOccupiedException;
 import exceptions.InvalidCoordinateException;
-import exceptions.InvalidMoveException;
 import model.Board;
 import model.Figure;
 import model.Point;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.fail;
+import static junit.framework.Assert.*;
 
 public class MoveControllerTest {
 
@@ -25,7 +22,7 @@ public class MoveControllerTest {
 
         try {
             moveController.applyFigure(board, inputFigure, inputPoint);
-        } catch (InvalidMoveException | AlreadyOccupiedException | InvalidCoordinateException e) {
+        } catch (AlreadyOccupiedException | InvalidCoordinateException e) {
             e.printStackTrace();
         }
 
@@ -56,7 +53,7 @@ public class MoveControllerTest {
             board.setFigures(Figure.X, inputPoint);
             moveController.applyFigure(board, inputFigure, inputPoint);
             fail();
-        } catch (InvalidMoveException | AlreadyOccupiedException | InvalidCoordinateException e) {
+        } catch (AlreadyOccupiedException | InvalidCoordinateException e) {
         }
     }
 }
