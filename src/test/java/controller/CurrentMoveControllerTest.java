@@ -13,6 +13,7 @@ public class CurrentMoveControllerTest {
 
     @Test
     public void testCurrentMoveStepO(){
+        final Figure expectedFigure = Figure.O;
         Board board = new Board(3, 3);
         CurrentMoveController currentMoveController = new CurrentMoveController();
 
@@ -26,11 +27,12 @@ public class CurrentMoveControllerTest {
 
         Figure currentFigure = currentMoveController.currentMove(board);
 
-        assertEquals(Figure.O, currentFigure);
+        assertEquals(expectedFigure, currentFigure);
     }
 
     @Test
     public void testCurrentMoveStepX(){
+        final Figure expectedFigure = Figure.X;
         Board board = new Board(3, 3);
         CurrentMoveController currentMoveController = new CurrentMoveController();
 
@@ -45,7 +47,7 @@ public class CurrentMoveControllerTest {
 
         Figure currentFigure = currentMoveController.currentMove(board);
 
-        assertEquals(Figure.X, currentFigure);
+        assertEquals(expectedFigure, currentFigure);
     }
 
     @Test
