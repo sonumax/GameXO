@@ -1,14 +1,14 @@
 package model;
 
 public class Game {
-    private final Player[] players;
-    private final Board board;
     private final String name;
+    private final Board board;
+    private final Player[] players;
 
-    public Game(final Player[] players, final Board board, final String name) {
-        this.players = players;
-        this.board = board;
+    public Game( final String name, final Board board, final Player[] players) {
         this.name = name;
+        this.board = board;
+        this.players = players;
     }
 
     public Player[] getPlayers() {

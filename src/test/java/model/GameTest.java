@@ -11,7 +11,7 @@ public class GameTest {
         final Player[] inputPlayers = new Player[] {new Player("Max", Figure.O), new Player("Vlad", Figure.X)};
         final Player[] exceptedPlayers = inputPlayers;
 
-        Game game = new Game(inputPlayers, null, null);
+        Game game = new Game(null, null, inputPlayers);
 
         final Player[] actualPlayer = game.getPlayers();
 
@@ -20,7 +20,7 @@ public class GameTest {
 
     @Test
     public void testGetBoard() {
-        final Board inputBoard = new Board(3, 3);
+        final Board inputBoard = new Board(3);
         final Board exceptedBoard = inputBoard;
 
         Game game = new Game(null, inputBoard, null);
@@ -35,7 +35,7 @@ public class GameTest {
         final String inputName = "Name";
         final String exceptedName = inputName;
 
-        Game game = new Game(null, null, inputName);
+        Game game = new Game(inputName, null, null);
 
         final String actualName = game.getName();
 

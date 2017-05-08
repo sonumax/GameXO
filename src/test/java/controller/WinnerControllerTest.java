@@ -14,7 +14,7 @@ public class WinnerControllerTest {
     @Test
     public void testGetWinnerOnDiagonalOne() {
         final int sizeField = 3;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
         final Figure currentFigure = Figure.X;
         final Figure expectedFigure = currentFigure;
 
@@ -34,19 +34,15 @@ public class WinnerControllerTest {
     }
 
     @Test
-    public void testGetWinnerOnDiagonalTwo() {
+    public void testGetWinnerOnDiagonalTwo() throws InvalidCoordinateException {
         final int sizeField = 3;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
         final Figure currentFigure = Figure.X;
         final Figure expectedFigure = currentFigure;
 
-        try {
-            board.setFigures(currentFigure, new Point(0, 2));
-            board.setFigures(currentFigure, new Point(1, 1));
-            board.setFigures(currentFigure, new Point(2, 0));
-        } catch (InvalidCoordinateException e) {
-            e.printStackTrace();
-        }
+        board.setFigures(currentFigure, new Point(0, 2));
+        board.setFigures(currentFigure, new Point(1, 1));
+        board.setFigures(currentFigure, new Point(2, 0));
 
         WinnerController winnerController = new WinnerController();
 
@@ -56,19 +52,15 @@ public class WinnerControllerTest {
     }
 
     @Test
-    public void testGetWinnerOnVertical() {
+    public void testGetWinnerOnVertical() throws InvalidCoordinateException {
         final int sizeField = 3;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
         final Figure currentFigure = Figure.X;
         final Figure expectedFigure = currentFigure;
 
-        try {
-            board.setFigures(currentFigure, new Point(1, 0));
-            board.setFigures(currentFigure, new Point(1, 1));
-            board.setFigures(currentFigure, new Point(1, 2));
-        } catch (InvalidCoordinateException e) {
-            e.printStackTrace();
-        }
+        board.setFigures(currentFigure, new Point(1, 0));
+        board.setFigures(currentFigure, new Point(1, 1));
+        board.setFigures(currentFigure, new Point(1, 2));
 
         WinnerController winnerController = new WinnerController();
 
@@ -78,19 +70,15 @@ public class WinnerControllerTest {
     }
 
     @Test
-    public void testGetWinnerOnHorizon() {
+    public void testGetWinnerOnHorizon() throws InvalidCoordinateException {
         final int sizeField = 3;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
         final Figure currentFigure = Figure.X;
         final Figure expectedFigure = currentFigure;
 
-        try {
-            board.setFigures(currentFigure, new Point(0, 0));
-            board.setFigures(currentFigure, new Point(1, 0));
-            board.setFigures(currentFigure, new Point(2, 0));
-        } catch (InvalidCoordinateException e) {
-            e.printStackTrace();
-        }
+        board.setFigures(currentFigure, new Point(0, 0));
+        board.setFigures(currentFigure, new Point(1, 0));
+        board.setFigures(currentFigure, new Point(2, 0));
 
         WinnerController winnerController = new WinnerController();
 
@@ -100,18 +88,14 @@ public class WinnerControllerTest {
     }
 
     @Test
-    public void testGetWinnerWhereNotWinner() {
+    public void testGetWinnerWhereNotWinner() throws InvalidCoordinateException {
         final int sizeField = 3;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
         final Figure currentFigure = Figure.X;
 
-        try {
-            board.setFigures(currentFigure, new Point(0, 0));
-            board.setFigures(currentFigure, new Point(1, 1));
-            board.setFigures(currentFigure, new Point(0, 1));
-        } catch (InvalidCoordinateException e) {
-            e.printStackTrace();
-        }
+        board.setFigures(currentFigure, new Point(0, 0));
+        board.setFigures(currentFigure, new Point(1, 1));
+        board.setFigures(currentFigure, new Point(0, 1));
 
         WinnerController winnerController = new WinnerController();
 
@@ -121,18 +105,14 @@ public class WinnerControllerTest {
     }
 
     @Test
-    public void testGetWinnerWhereNotWinnerWithO() {
+    public void testGetWinnerWhereNotWinnerWithO() throws InvalidCoordinateException {
         final int sizeField = 3;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
         final Figure currentFigure = Figure.X;
 
-        try {
-            board.setFigures(currentFigure, new Point(0, 0));
-            board.setFigures(currentFigure, new Point(1, 1));
-            board.setFigures(Figure.O, new Point(2, 2));
-        } catch (InvalidCoordinateException e) {
-            e.printStackTrace();
-        }
+        board.setFigures(currentFigure, new Point(0, 0));
+        board.setFigures(currentFigure, new Point(1, 1));
+        board.setFigures(Figure.O, new Point(2, 2));
 
         WinnerController winnerController = new WinnerController();
 
