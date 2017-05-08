@@ -4,13 +4,11 @@ import exceptions.InvalidCoordinateException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 public class BoardTest {
 
     @Test
-    public void testSetFigures() {
+    public void testSetFigures() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = 0;
         final int valueY = valueX;
@@ -18,140 +16,109 @@ public class BoardTest {
         final Point point = new Point(valueX, valueY);
         final Figure inputFigure = Figure.X;
         final Figure expectedFigure = inputFigure;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
-        try {
-            board.setFigures(inputFigure, point);
-        } catch (InvalidCoordinateException e) {
-            e.printStackTrace();
-        }
-
+        board.setFigures(inputFigure, point);
         Figure actualFigure = board.getFigure(point);
 
         assertEquals(expectedFigure, actualFigure);
     }
 
-    @Test
-    public void testSetFiguresWithInvalidCoordinate() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testSetFiguresWithInvalidCoordinate() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = -1;
         final int valueY = valueX;
 
         final Point point = new Point(valueX, valueY);
         final Figure inputFigure = Figure.X;
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
-        try {
-            board.setFigures(inputFigure, point);
-            fail();
-        } catch (InvalidCoordinateException e) {}
+        board.setFigures(inputFigure, point);
     }
 
-    @Test
-    public void testGetFiguresNotValidateValueXLessMin() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testGetFiguresNotValidateValueXLessMin() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = -1;
         final int valueY = 0;
 
         final Point point = new Point(valueX, valueY);
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
         final Figure actualFigure = board.getFigure(point);
-
-        assertNull(actualFigure);
     }
 
-    @Test
-    public void testGetFiguresNotValidateValueXMoreMax() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testGetFiguresNotValidateValueXMoreMax() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = 4;
         final int valueY = 0;
 
         final Point point = new Point(valueX, valueY);
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
         final Figure actualFigure = board.getFigure(point);
 
-        assertNull(actualFigure);
     }
 
-    @Test
-    public void testGetFiguresNotValidateValueYLessMin() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testGetFiguresNotValidateValueYLessMin() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = 0;
         final int valueY = -1;
 
         final Point point = new Point(valueX, valueY);
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
         final Figure actualFigure = board.getFigure(point);
-
-        assertNull(actualFigure);
     }
 
-    @Test
-    public void testGetFiguresNotValidateValueYMoreMax() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testGetFiguresNotValidateValueYMoreMax() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = 0;
         final int valueY = 4;
 
         final Point point = new Point(valueX, valueY);
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
         final Figure actualFigure = board.getFigure(point);
-
-        assertNull(actualFigure);
     }
 
-    @Test
-    public void testGetFiguresNotValidateValueXAndYLessMin() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testGetFiguresNotValidateValueXAndYLessMin() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = -1;
         final int valueY = valueX;
 
         final Point point = new Point(valueX, valueY);
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
         final Figure actualFigure = board.getFigure(point);
-
-        assertNull(actualFigure);
     }
 
-    @Test
-    public void testGetFiguresNotValidateValueXAndYMoreMax() {
+    @Test(expected = InvalidCoordinateException.class)
+    public void testGetFiguresNotValidateValueXAndYMoreMax() throws InvalidCoordinateException {
         final int sizeField = 3;
         final int valueX = 4;
         final int valueY = valueX;
 
         final Point point = new Point(valueX, valueY);
-        final Board board = new Board(sizeField, sizeField);
+        final Board board = new Board(sizeField);
 
         final Figure actualFigure = board.getFigure(point);
-
-        assertNull(actualFigure);
     }
 
     @Test
-    public void testGetSizeX() {
-        final int inputSizeX = 3;
-        final int exceptedSizeX = inputSizeX;
+    public void testGetSize() {
+        final int inputSize = 3;
+        final int exceptedSize = inputSize;
 
-        final Board board = new Board(inputSizeX, 0);
+        final Board board = new Board(inputSize);
 
-        final int actualSizeX = board.getSizeFieldX();
+        final int actualSize = board.getSizeBoard();
 
-        assertEquals(exceptedSizeX, actualSizeX);
-    }
-
-    @Test
-    public void testGetSizeY() {
-        final int inputSizeY = 10;
-        final int exceptedSizeY = inputSizeY;
-
-        final Board board = new Board(1, inputSizeY);
-
-        final int actualSizeY = board.getSizeFieldY();
-
-        assertEquals(exceptedSizeY, actualSizeY);
+        assertEquals(exceptedSize, actualSize);
     }
 }
