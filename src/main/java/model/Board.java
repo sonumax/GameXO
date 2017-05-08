@@ -1,51 +1,40 @@
 package model;
 
-
 import exceptions.InvalidCoordinateException;
 
 public class Board {
-    public static final int MIN_COORDINATE = 0;
 
+    private static final int MIN_COORDINATE = 0;
+    private final int maxCoordinate;
     private Figure[][] figures;
 
-    public Board(final int sizeFieldX, final int sizeFieldY) {
-        figures = new Figure[sizeFieldX][sizeFieldY];
+    public Board(final int sizeField) {
+        figures = new Figure[sizeField][sizeField];
+        maxCoordinate = sizeField - 1;
     }
 
-    public Figure getFigure(final Point point ) {
-        if(!checkCoordinateX(point.getX()) || !checkCoordinateY(point.getY())) {
-            return null;
+    public Figure getFigure(final Point point) throws InvalidCoordinateException {
+        if(!checkCoordinate(point.getX()) || !checkCoordinate(point.getY())) {
+            throw new InvalidCoordinateException();
         }
         return figures[point.getX()][point.getY()];
     }
 
     public void setFigures(final Figure figure , final Point point) throws InvalidCoordinateException {
-        if (!checkCoordinateX(point.getY()) || !checkCoordinateY(point.getY())) {
+        if (!checkCoordinate(point.getX()) || !checkCoordinate(point.getY())) {
             throw new InvalidCoordinateException();
         }
-
         figures[point.getX()][point.getY()] = figure;
     }
 
-    public boolean checkCoordinateX(final int coordinateX) {
-        if (coordinateX < MIN_COORDINATE || coordinateX > figures.length) {
+    public boolean checkCoordinate(final int coordinate) {
+        if (coordinate < MIN_COORDINATE || coordinate > maxCoordinate) {
             return false;
         }
         return true;
     }
 
-    public boolean checkCoordinateY(final int coordinateY) {
-        if (coordinateY < MIN_COORDINATE || coordinateY > figures[0].length) {
-            return false;
-        }
-        return true;
-    }
-
-    public int getSizeFieldX() {
+    public int getSizeBoard() {
         return figures.length;
-    }
-
-    public int getSizeFieldY() {
-        return figures[0].length;
     }
 }
