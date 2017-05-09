@@ -56,7 +56,7 @@ public class ConsoleView {
             return false;
         }
 
-        System.out.format("Please enter move point for: %s\n", currentFigure);
+        System.out.format("Please enter move point for: %s(%s)\n", currentPlayer.getName(), currentFigure);
         final Point currentPoint = askPoint();
 
         try {
